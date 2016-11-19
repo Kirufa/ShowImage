@@ -213,11 +213,13 @@ namespace ShowPicture
             }
 
 
-
-            if (count < pictures.Count)
-                count++;
-            else
-                count = 0;
+            if (pictures.Count > 0)
+            {
+                if (count < pictures.Count - 1)
+                    count++;
+                else
+                    count = 0;
+            }
         }
 
         private void toolStripTextBox_TextChanged(object sender, EventArgs e)
