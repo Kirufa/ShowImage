@@ -1,0 +1,8 @@
+c:\users\ntpunsl-p35\documents\visual studio 2015\Projects\ShowPicture\bin\Debug\ShowPicture.exe
+c:\users\ntpunsl-p35\documents\visual studio 2015\Projects\ShowPicture\bin\Debug\ShowPicture.pdb
+c:\users\ntpunsl-p35\documents\visual studio 2015\Projects\ShowPicture\obj\Debug\ShowPicture.csprojResolveAssemblyReference.cache
+c:\users\ntpunsl-p35\documents\visual studio 2015\Projects\ShowPicture\obj\Debug\ShowPicture.Properties.Resources.resources
+c:\users\ntpunsl-p35\documents\visual studio 2015\Projects\ShowPicture\obj\Debug\ShowPicture.csproj.GenerateResource.Cache
+c:\users\ntpunsl-p35\documents\visual studio 2015\Projects\ShowPicture\obj\Debug\ShowPicture.exe
+c:\users\ntpunsl-p35\documents\visual studio 2015\Projects\ShowPicture\obj\Debug\ShowPicture.pdb
+C:\Users\NTPUNSL-P35\Documents\Visual Studio 2015\Projects\ShowPicture\obj\Debug\ShowPicture.MainForm.resources
