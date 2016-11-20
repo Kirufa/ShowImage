@@ -42,10 +42,13 @@ namespace ShowPicture
             path = string.Empty;
 
             pictures = new List<string>();
+            directories = new List<string>();
             extensions = new List<string>(new string[] { ".jpg", ".jpeg", ".png", ".bmp", ".tiff", ".tif" });
 
-            count = 0;
+            pictureCount = 0;
+            folderCount = 0;
             Opacity = 0.75;
+            this.TopMost = true;
            
         }
 
@@ -55,9 +58,11 @@ namespace ShowPicture
         private Point point;
         private string path;
         private List<string> pictures;
+        private List<string> directories;
         private List<string> extensions;
         private Bitmap nowPicuture;
-        private int count;
+        private int pictureCount;
+        private int folderCount;
         private Color transparentColor;
        
         
@@ -171,22 +176,23 @@ namespace ShowPicture
             if( fbd.ShowDialog() == DialogResult.OK &&
                 !string.IsNullOrEmpty( fbd.SelectedPath) &&
                 Directory.Exists(fbd.SelectedPath))
-            {
+            {               
+                folderCount = 0;
+
                 showTimer.Stop();
-                count = 0;
-                pictures.Clear();
+
+                directories.Clear();
+
 
                 path = fbd.SelectedPath;
 
-                string[] tempFiles = Directory.GetFiles(path);
+                string[] tempDirectories = Directory.GetDirectories(path);
+                
 
-                foreach(string file in tempFiles)
-                {
-                    string extension = Path.GetExtension(file);
+                foreach (string dir in tempDirectories)
+                    directories.Add(dir);
 
-                    if (extensions.Contains(extension))
-                        pictures.Add(file);
-                }
+                ChangeDirectory(0);
 
                 showTimer.Start();
             }
@@ -197,6 +203,41 @@ namespace ShowPicture
             GetNextPicrure();
             showPictureBox.Image = nowPicuture;
         }
+
+        private void ChangeDirectory(int num = -1)
+        {
+            pictures.Clear();
+
+            pictureCount = 0;
+
+            if (directories.Count > 0)
+            {
+                if (num == -1)
+                {
+                   
+                        if (folderCount < directories.Count - 1)
+                            folderCount++;
+                        else
+                            folderCount = 0;
+                    
+                }
+                else
+                {
+                    folderCount = 0;
+                }
+
+                string[] tempFiles = Directory.GetFiles(directories[folderCount]);
+
+                foreach (string file in tempFiles)
+                {
+                    string extension = Path.GetExtension(file);
+
+                    if (extensions.Contains(extension))
+                        pictures.Add(file);
+                }
+            }
+        }
+
         private void GetNextPicrure()
         {
 
@@ -205,7 +246,7 @@ namespace ShowPicture
 
             try
             {
-                nowPicuture = new Bitmap(pictures[count]);
+                nowPicuture = new Bitmap(pictures[pictureCount]);
             }
             catch
             {
@@ -215,10 +256,10 @@ namespace ShowPicture
 
             if (pictures.Count > 0)
             {
-                if (count < pictures.Count - 1)
-                    count++;
+                if (pictureCount < pictures.Count - 1)
+                    pictureCount++;
                 else
-                    count = 0;
+                    pictureCount = 0;
             }
         }
 
@@ -248,6 +289,13 @@ namespace ShowPicture
             {               
                 this.TopMost = value;
             }
+        }
+
+        private void nextFolderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showTimer.Stop();
+            ChangeDirectory();
+            showTimer.Start();
         }
 
         //private Bitmap errorImage

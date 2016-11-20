@@ -5,3 +5,4 @@ C:\Users\NTPUNSL-P35\Documents\Visual Studio 2015\Projects\ShowPicture\obj\x86\D
 C:\Users\NTPUNSL-P35\Documents\Visual Studio 2015\Projects\ShowPicture\obj\x86\Debug\ShowPicture.csproj.GenerateResource.Cache
 C:\Users\NTPUNSL-P35\Documents\Visual Studio 2015\Projects\ShowPicture\obj\x86\Debug\ShowPicture.exe
 C:\Users\NTPUNSL-P35\Documents\Visual Studio 2015\Projects\ShowPicture\obj\x86\Debug\ShowPicture.pdb
+C:\Users\NTPUNSL-P35\Documents\Visual Studio 2015\Projects\ShowPicture\obj\x86\Debug\ShowPicture.csprojResolveAssemblyReference.cache
