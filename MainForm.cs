@@ -239,6 +239,17 @@ namespace ShowPicture
 
         }
 
+        private void toolStripTextBox_topmost_TextChanged(object sender, EventArgs e)
+        {
+            ToolStripTextBox textBox = sender as ToolStripTextBox;
+            bool value;
+
+            if (bool.TryParse(textBox.Text, out value))               
+            {               
+                this.TopMost = value;
+            }
+        }
+
         //private Bitmap errorImage
         //{
         //    get

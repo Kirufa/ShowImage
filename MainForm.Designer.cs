@@ -32,11 +32,13 @@
             this.showPictureBox = new System.Windows.Forms.PictureBox();
             this.rigntCtMS = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.opacityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
             this.moveToCenterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showTimer = new System.Windows.Forms.Timer(this.components);
-            this.opacityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
+            this.topMosetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripTextBox_topmost = new System.Windows.Forms.ToolStripTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.showPictureBox)).BeginInit();
             this.rigntCtMS.SuspendLayout();
             this.SuspendLayout();
@@ -63,9 +65,10 @@
             this.openToolStripMenuItem,
             this.opacityToolStripMenuItem,
             this.moveToCenterToolStripMenuItem,
+            this.topMosetToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.rigntCtMS.Name = "rigntCtMS";
-            this.rigntCtMS.Size = new System.Drawing.Size(166, 114);
+            this.rigntCtMS.Size = new System.Drawing.Size(166, 136);
             // 
             // openToolStripMenuItem
             // 
@@ -73,6 +76,21 @@
             this.openToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
+            // 
+            // opacityToolStripMenuItem
+            // 
+            this.opacityToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripTextBox});
+            this.opacityToolStripMenuItem.Name = "opacityToolStripMenuItem";
+            this.opacityToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.opacityToolStripMenuItem.Text = "Opacity";
+            // 
+            // toolStripTextBox
+            // 
+            this.toolStripTextBox.Name = "toolStripTextBox";
+            this.toolStripTextBox.Size = new System.Drawing.Size(100, 23);
+            this.toolStripTextBox.Text = "0.75";
+            this.toolStripTextBox.TextChanged += new System.EventHandler(this.toolStripTextBox_TextChanged);
             // 
             // moveToCenterToolStripMenuItem
             // 
@@ -93,20 +111,20 @@
             this.showTimer.Interval = 750;
             this.showTimer.Tick += new System.EventHandler(this.showTimer_Tick);
             // 
-            // opacityToolStripMenuItem
+            // topMosetToolStripMenuItem
             // 
-            this.opacityToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripTextBox});
-            this.opacityToolStripMenuItem.Name = "opacityToolStripMenuItem";
-            this.opacityToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
-            this.opacityToolStripMenuItem.Text = "Opacity";
+            this.topMosetToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripTextBox_topmost});
+            this.topMosetToolStripMenuItem.Name = "topMosetToolStripMenuItem";
+            this.topMosetToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.topMosetToolStripMenuItem.Text = "TopMoset";
             // 
-            // toolStripTextBox
+            // toolStripTextBox_topmost
             // 
-            this.toolStripTextBox.Name = "toolStripTextBox";
-            this.toolStripTextBox.Size = new System.Drawing.Size(100, 23);
-            this.toolStripTextBox.Text = "0.75";
-            this.toolStripTextBox.TextChanged += new System.EventHandler(this.toolStripTextBox_TextChanged);
+            this.toolStripTextBox_topmost.Name = "toolStripTextBox_topmost";
+            this.toolStripTextBox_topmost.Size = new System.Drawing.Size(100, 23);
+            this.toolStripTextBox_topmost.Text = "true";
+            this.toolStripTextBox_topmost.TextChanged += new System.EventHandler(this.toolStripTextBox_topmost_TextChanged);
             // 
             // MainForm
             // 
@@ -136,6 +154,8 @@
         private System.Windows.Forms.Timer showTimer;
         private System.Windows.Forms.ToolStripMenuItem opacityToolStripMenuItem;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox;
+        private System.Windows.Forms.ToolStripMenuItem topMosetToolStripMenuItem;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox_topmost;
     }
 }
 
