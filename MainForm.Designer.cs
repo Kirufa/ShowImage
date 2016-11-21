@@ -34,12 +34,12 @@
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.opacityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
-            this.moveToCenterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.topMosetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripTextBox_topmost = new System.Windows.Forms.ToolStripTextBox();
+            this.nextImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripTextBox_nextimage = new System.Windows.Forms.ToolStripTextBox();
+            this.moveToCenterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.showTimer = new System.Windows.Forms.Timer(this.components);
-            this.nextFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.showPictureBox)).BeginInit();
             this.rigntCtMS.SuspendLayout();
             this.SuspendLayout();
@@ -66,16 +66,16 @@
             this.openToolStripMenuItem,
             this.opacityToolStripMenuItem,
             this.topMosetToolStripMenuItem,
+            this.nextImageToolStripMenuItem,
             this.moveToCenterToolStripMenuItem,
-            this.nextFolderToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.rigntCtMS.Name = "rigntCtMS";
-            this.rigntCtMS.Size = new System.Drawing.Size(166, 158);
+            this.rigntCtMS.Size = new System.Drawing.Size(229, 136);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
@@ -84,8 +84,8 @@
             this.opacityToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripTextBox});
             this.opacityToolStripMenuItem.Name = "opacityToolStripMenuItem";
-            this.opacityToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
-            this.opacityToolStripMenuItem.Text = "Opacity";
+            this.opacityToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+            this.opacityToolStripMenuItem.Text = "Opacity (0~1)";
             // 
             // toolStripTextBox
             // 
@@ -94,20 +94,13 @@
             this.toolStripTextBox.Text = "0.75";
             this.toolStripTextBox.TextChanged += new System.EventHandler(this.toolStripTextBox_TextChanged);
             // 
-            // moveToCenterToolStripMenuItem
-            // 
-            this.moveToCenterToolStripMenuItem.Name = "moveToCenterToolStripMenuItem";
-            this.moveToCenterToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
-            this.moveToCenterToolStripMenuItem.Text = "Move To Center";
-            this.moveToCenterToolStripMenuItem.Click += new System.EventHandler(this.moveToCenterToolStripMenuItem_Click);
-            // 
             // topMosetToolStripMenuItem
             // 
             this.topMosetToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripTextBox_topmost});
             this.topMosetToolStripMenuItem.Name = "topMosetToolStripMenuItem";
-            this.topMosetToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
-            this.topMosetToolStripMenuItem.Text = "TopMoset";
+            this.topMosetToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+            this.topMosetToolStripMenuItem.Text = "TopMoset (true/false)";
             // 
             // toolStripTextBox_topmost
             // 
@@ -116,24 +109,35 @@
             this.toolStripTextBox_topmost.Text = "true";
             this.toolStripTextBox_topmost.TextChanged += new System.EventHandler(this.toolStripTextBox_topmost_TextChanged);
             // 
+            // nextImageToolStripMenuItem
+            // 
+            this.nextImageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripTextBox_nextimage});
+            this.nextImageToolStripMenuItem.Name = "nextImageToolStripMenuItem";
+            this.nextImageToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+            this.nextImageToolStripMenuItem.Text = "Next Image (next/previous)";
+            this.nextImageToolStripMenuItem.Click += new System.EventHandler(this.nextImageToolStripMenuItem_Click);
+            // 
+            // toolStripTextBox_nextimage
+            // 
+            this.toolStripTextBox_nextimage.Name = "toolStripTextBox_nextimage";
+            this.toolStripTextBox_nextimage.Size = new System.Drawing.Size(100, 23);
+            this.toolStripTextBox_nextimage.Text = "next";
+            this.toolStripTextBox_nextimage.TextChanged += new System.EventHandler(this.toolStripTextBox_nextimage_TextChanged);
+            // 
+            // moveToCenterToolStripMenuItem
+            // 
+            this.moveToCenterToolStripMenuItem.Name = "moveToCenterToolStripMenuItem";
+            this.moveToCenterToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+            this.moveToCenterToolStripMenuItem.Text = "Move To Center";
+            this.moveToCenterToolStripMenuItem.Click += new System.EventHandler(this.moveToCenterToolStripMenuItem_Click);
+            // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-            // 
-            // showTimer
-            // 
-            this.showTimer.Interval = 750;
-            this.showTimer.Tick += new System.EventHandler(this.showTimer_Tick);
-            // 
-            // nextFolderToolStripMenuItem
-            // 
-            this.nextFolderToolStripMenuItem.Name = "nextFolderToolStripMenuItem";
-            this.nextFolderToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
-            this.nextFolderToolStripMenuItem.Text = "Next Folder";
-            this.nextFolderToolStripMenuItem.Click += new System.EventHandler(this.nextFolderToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -144,7 +148,7 @@
             this.Controls.Add(this.showPictureBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MainForm";
-            this.Text = "Form1";
+            this.Text = "Loli Saiko";
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.showPictureBox)).EndInit();
             this.rigntCtMS.ResumeLayout(false);
@@ -160,12 +164,12 @@
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem moveToCenterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.Timer showTimer;
         private System.Windows.Forms.ToolStripMenuItem opacityToolStripMenuItem;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox;
         private System.Windows.Forms.ToolStripMenuItem topMosetToolStripMenuItem;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox_topmost;
-        private System.Windows.Forms.ToolStripMenuItem nextFolderToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem nextImageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox_nextimage;
     }
 }
 

@@ -42,13 +42,15 @@ namespace ShowPicture
             path = string.Empty;
 
             pictures = new List<string>();
-            directories = new List<string>();
-            extensions = new List<string>(new string[] { ".jpg", ".jpeg", ".png", ".bmp", ".tiff", ".tif" });
+            extensions = new List<string>(new string[] { ".jpg", ".jpeg", ".png", ".bmp", ".tiff", ".tif", "gif" });
 
             pictureCount = 0;
-            folderCount = 0;
+          
             Opacity = 0.75;
             this.TopMost = true;
+
+           
+            nextImage = true;
            
         }
 
@@ -58,12 +60,11 @@ namespace ShowPicture
         private Point point;
         private string path;
         private List<string> pictures;
-        private List<string> directories;
         private List<string> extensions;
         private Bitmap nowPicuture;
         private int pictureCount;
-        private int folderCount;
-        private Color transparentColor;
+       private Color transparentColor;
+        private bool nextImage;
        
         
         private void DrawBorder(Graphics g, Size border)
@@ -173,60 +174,16 @@ namespace ShowPicture
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog fbd = new FolderBrowserDialog();
-            if( fbd.ShowDialog() == DialogResult.OK &&
-                !string.IsNullOrEmpty( fbd.SelectedPath) &&
+            if (fbd.ShowDialog() == DialogResult.OK &&
+                !string.IsNullOrEmpty(fbd.SelectedPath) &&
                 Directory.Exists(fbd.SelectedPath))
-            {               
-                folderCount = 0;
-
-                showTimer.Stop();
-
-                directories.Clear();
-
+            {
+               
+                pictures.Clear();
 
                 path = fbd.SelectedPath;
 
-                string[] tempDirectories = Directory.GetDirectories(path);
-                
-
-                foreach (string dir in tempDirectories)
-                    directories.Add(dir);
-
-                ChangeDirectory(0);
-
-                showTimer.Start();
-            }
-        }
-
-        private void showTimer_Tick(object sender, EventArgs e)
-        {
-            GetNextPicrure();
-            showPictureBox.Image = nowPicuture;
-        }
-
-        private void ChangeDirectory(int num = -1)
-        {
-            pictures.Clear();
-
-            pictureCount = 0;
-
-            if (directories.Count > 0)
-            {
-                if (num == -1)
-                {
-                   
-                        if (folderCount < directories.Count - 1)
-                            folderCount++;
-                        else
-                            folderCount = 0;
-                    
-                }
-                else
-                {
-                    folderCount = 0;
-                }
-
-                string[] tempFiles = Directory.GetFiles(directories[folderCount]);
+                string[] tempFiles = Directory.GetFiles(path);
 
                 foreach (string file in tempFiles)
                 {
@@ -235,8 +192,17 @@ namespace ShowPicture
                     if (extensions.Contains(extension))
                         pictures.Add(file);
                 }
+
+                nextImageToolStripMenuItem.PerformClick();
             }
         }
+
+        private void showTimer_Tick(object sender, EventArgs e)
+        {
+            
+        }
+
+       
 
         private void GetNextPicrure()
         {
@@ -256,10 +222,20 @@ namespace ShowPicture
 
             if (pictures.Count > 0)
             {
-                if (pictureCount < pictures.Count - 1)
-                    pictureCount++;
+                if (nextImage)
+                {
+                    if (pictureCount < pictures.Count - 1)
+                        pictureCount++;
+                    else
+                        pictureCount = 0;
+                }
                 else
-                    pictureCount = 0;
+                {
+                    if (pictureCount > 0)
+                        pictureCount--;
+                    else
+                        pictureCount = pictures.Count - 1;
+                }
             }
         }
 
@@ -283,36 +259,38 @@ namespace ShowPicture
         private void toolStripTextBox_topmost_TextChanged(object sender, EventArgs e)
         {
             ToolStripTextBox textBox = sender as ToolStripTextBox;
-            bool value;
+            string text = textBox.Text.ToLower();
 
-            if (bool.TryParse(textBox.Text, out value))               
-            {               
-                this.TopMost = value;
-            }
+            List<string> trueList = new List<string>(new string[] { "true", "t" });
+            List<string> falseList = new List<string>(new string[] { "false", "f" });
+
+            if (trueList.Contains(text))
+                TopMost = true;
+
+            if (falseList.Contains(text))
+                TopMost = false;
         }
 
-        private void nextFolderToolStripMenuItem_Click(object sender, EventArgs e)
+        private void nextImageToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            showTimer.Stop();
-            ChangeDirectory();
-            showTimer.Start();
+            GetNextPicrure();
+            showPictureBox.Image = nowPicuture;
         }
 
-        //private Bitmap errorImage
-        //{
-        //    get
-        //    {
-        //        Bitmap bmp = new Bitmap(200, 200);
-        //        using (Graphics g = Graphics.FromImage(bmp))
-        //        {
-        //            g.Clear(Color.White);
-        //            g.DrawLine(Pens.Red, new Point(0, 0), new Point(bmp.Width - 1, bmp.Height - 1));
-        //            g.DrawLine(Pens.Red, new Point(bmp.Width - 1, 0), new Point(0, bmp.Height - 1));
-        //        }
-        //
-        //        return bmp;
-        //    }
-        //}
+        private void toolStripTextBox_nextimage_TextChanged(object sender, EventArgs e)
+        {
+            ToolStripTextBox textBox = sender as ToolStripTextBox;
+
+            string text = textBox.Text.ToLower();
+            List<string> nextList = new List<string>(new string[] { "next", "n" });
+            List<string> prevList = new List<string>(new string[] { "previous", "prev", "p" });
+
+            if (nextList.Contains(text))
+                nextImage = true;
+
+            if (prevList.Contains(text))
+                nextImage = false;
+        }
     }
 
     public class TempClass
